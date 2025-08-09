@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NbSpinnerModule, NbAlertModule, NbIconModule, NbCardModule, NbLayoutModule, NbOptionModule, NbSelectModule, NbButtonModule , NbDatepickerModule, NbThemeModule , NbDropdownModule} from '@nebular/theme';
+import { NbSpinnerModule, NbAlertModule, NbIconModule, NbCardModule, NbLayoutModule, NbOptionModule, NbSelectModule, NbButtonModule , NbDatepickerModule, NbThemeModule , NbContextMenuModule} from '@nebular/theme';
 
 @NgModule({
   declarations: [
@@ -26,10 +26,10 @@ import { NbSpinnerModule, NbAlertModule, NbIconModule, NbCardModule, NbLayoutMod
     NbOptionModule,
     NbSelectModule, 
     NbButtonModule,
+    NbContextMenuModule ,
     NbDatepickerModule.forRoot(),
-    NbThemeModule.forRoot({name:'default'}),
-    NbDropdownModule
-  ],
+    NbThemeModule.forRoot({name:'default'})
+   ],
   providers: [],
   bootstrap: [AppComponent]
 })

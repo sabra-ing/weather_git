@@ -11,6 +11,6 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {}
   getWeather(governorate: string, date: string): Observable<WeatherData> {
-    return this.http.get<WeatherData>(${this.baseUrl}?governorate=${governorate}&date=${date});
+    return this.http.get<WeatherData>('${this.baseUrl}?governorate=${governorate}&date=${date}');
 }
 }

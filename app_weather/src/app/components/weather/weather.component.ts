@@ -7,12 +7,14 @@ import { WeatherService } from '../../data/services/weather.service';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent {
-   governorates = [
+  governorates = [
     'Tunis', 'Ariana', 'Ben Arous', 'Manouba', 'Nabeul', 'Bizerte',
     'Zaghouan', 'Beja', 'Jendouba', 'Kef', 'Siliana', 'Kairouan',
     'Kasserine', 'Sidi Bouzid', 'Sousse', 'Monastir', 'Mahdia',
     'Gabes', 'Mednine', 'Tataouine', 'Gafsa', 'Tozeur', 'Kebili'
   ];
+
+
 
   selectedGovernorate = '';
   selectedDate = new Date();

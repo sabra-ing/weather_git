@@ -15,18 +15,18 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
           
           <!-- Governorate -->
-     <nb-dropdown>
-  <button nbButton status="primary" outline>
-    {{ selectedGovernorate || 'Choose a governorate...' }}
-    <nb-icon icon="chevron-down-outline" pack="eva"></nb-icon>
-  </button>
-
-  <nb-dropdown-menu>
-    <nb-dropdown-item *ngFor="let gov of governorates" (click)="selectGovernorate(gov)">
-      {{ gov }}
-    </nb-dropdown-item>
-  </nb-dropdown-menu>
-</nb-dropdown>
+          <nb-select
+  placeholder="Choose a governorate..."
+  [(selected)]="selectedGovernorate"
+  size="medium"
+  status="primary"
+  fullWidth
+  class="rounded-lg shadow-md"
+>
+  <nb-option *ngFor="let gov of governorates" [value]="gov">
+    {{ gov }}
+  </nb-option>
+</nb-select>
 
 
           <!-- Date Picker -->
