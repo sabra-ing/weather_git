@@ -1,0 +1,70 @@
+<nb-layout>
+  <nb-layout-column class="bg-gradient-to-b from-blue-50 to-purple-50 min-h-screen flex flex-col items-center py-10">
+    
+    <!-- Header -->
+    <div class="text-center">
+      <nb-icon icon="sun-outline" class="text-yellow-400 w-10 h-10"></nb-icon>
+      <h1 class="text-5xl font-extrabold text-purple-600">Tunisia Weather</h1>
+      <p class="text-gray-500 mt-2">Discover real-time weather conditions across all Tunisian governorates</p>
+    </div>
+
+    <!-- Selector Card -->
+    <nb-card class="w-full max-w-4xl mt-8 bg-white">
+      <nb-card-body class="p-6">
+        <h2 class="text-lg font-bold mb-4">Select Location & Date</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+          
+          <!-- Governorate -->
+     <nb-dropdown>
+  <button nbButton status="primary" outline>
+    {{ selectedGovernorate || 'Choose a governorate...' }}
+    <nb-icon icon="chevron-down-outline" pack="eva"></nb-icon>
+  </button>
+
+  <nb-dropdown-menu>
+    <nb-dropdown-item *ngFor="let gov of governorates" (click)="selectGovernorate(gov)">
+      {{ gov }}
+    </nb-dropdown-item>
+  </nb-dropdown-menu>
+</nb-dropdown>
+
+
+          <!-- Date Picker -->
+          <input nbInput type="date" [(ngModel)]="selectedDate" class="rounded-md border p-2" />
+
+          <!-- Fetch Button -->
+          <button nbButton status="primary" (click)="fetchWeather()">Get Weather</button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+    <!-- Loading -->
+    <nb-card class="w-full max-w-4xl mt-8 bg-white">
+      <nb-card-body class="p-6">
+    <div *ngIf="loading" class="mt-6 flex items-center">
+      <nb-spinner size="large"></nb-spinner>
+      <span class="ml-3 text-gray-600">Fetching weather data...</span>
+    </div>
+
+    <!-- Error -->
+    
+    <nb-alert *ngIf="errorMessage" status="danger" class="mt-6 w-full max-w-4xl">
+      {{ errorMessage }}
+    </nb-alert>
+    
+    <!-- Weather Data Card -->
+    <nb-card *ngIf="weatherData" class="w-full max-w-4xl mt-6 text-center">
+      <nb-card-body>
+        <nb-icon icon="cloud-outline" class="text-blue-400 w-12 h-12 mb-4"></nb-icon>
+        <h3 class="text-xl font-bold">{{ weatherData.location }}</h3>
+        <p class="text-gray-500">{{ weatherData.date }}</p>
+        <p class="mt-4 text-lg"> Temperature: {{ weatherData.temperature }}°C</p>
+        <p> Humidity: {{ weatherData.humidity }}%</p>
+        <p> Wind Speed: {{ weatherData.wind_speed }} km/h</p>
+      </nb-card-body>
+    </nb-card>
+       </nb-card-body>
+    </nb-card>
+
+  </nb-layout-column>
+  </nb-layout>
