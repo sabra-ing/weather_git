@@ -3,7 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WeatherComponent } from './component/weather/weather.component';
+import { WeatherComponent } from './components/weather/weather.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { NbSpinnerModule, NbAlertModule, NbIconModule, NbCardModule, NbLayoutModule, NbOptionModule, NbSelectModule, NbButtonModule , NbDatepickerModule, NbThemeModule , NbDropdownModule} from '@nebular/theme';
 
 @NgModule({
   declarations: [
@@ -12,7 +15,20 @@ import { WeatherComponent } from './component/weather/weather.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    NbSpinnerModule,
+    NbAlertModule,
+    NbIconModule,
+    NbCardModule,
+    NbLayoutModule,
+    NbOptionModule,
+    NbSelectModule, 
+    NbButtonModule,
+    NbDatepickerModule.forRoot(),
+    NbThemeModule.forRoot({name:'default'}),
+    NbDropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
