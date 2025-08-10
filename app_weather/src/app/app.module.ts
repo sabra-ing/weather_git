@@ -7,6 +7,7 @@ import { WeatherComponent } from './components/weather/weather.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NbSpinnerModule, NbAlertModule, NbIconModule, NbCardModule, NbLayoutModule, NbOptionModule, NbSelectModule, NbButtonModule , NbDatepickerModule, NbThemeModule , NbContextMenuModule} from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NbSpinnerModule, NbAlertModule, NbIconModule, NbCardModule, NbLayoutMod
     NbSpinnerModule,
     NbAlertModule,
     NbIconModule,
+    NbEvaIconsModule,
     NbCardModule,
     NbLayoutModule,
     NbOptionModule,

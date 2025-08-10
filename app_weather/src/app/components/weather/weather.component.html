@@ -4,42 +4,59 @@
     <!-- Header -->
     <div class="text-center">
       <nb-icon icon="sun-outline" class="text-yellow-400 w-10 h-10"></nb-icon>
+      <nb-icon icon="umbrella-outline" class="text-blue-400 w-8 h-8 mb-4"></nb-icon>
+
       <h1 class="text-5xl font-extrabold text-purple-600">Tunisia Weather</h1>
       <p class="text-gray-500 mt-2">Discover real-time weather conditions across all Tunisian governorates</p>
     </div>
 
     <!-- Selector Card -->
-    <nb-card class="w-full max-w-4xl mt-8 bg-white">
+    <nb-card class="w-full max-w-4xl mt-8 bg-white rounded-2xl shadow-md ">
       <nb-card-body class="p-6">
         <h2 class="text-lg font-bold mb-4">Select Location & Date</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
           
-          <!-- Governorate -->
-          <nb-select
-  placeholder="Choose a governorate..."
-  [(selected)]="selectedGovernorate"
-  size="medium"
-  status="primary"
-  fullWidth
-  class="rounded-lg shadow-md"
->
-  <nb-option *ngFor="let gov of governorates" [value]="gov">
-    {{ gov }}
-  </nb-option>
-</nb-select>
+     
+    <!-- Governorate -->
+<div class="relative">
+  <button
+    nbButton
+    status="info"
+    class="bg-white border border-gray-300 rounded-md px-4 py-2 text-left shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 flex justify-between items-center"
+    (click)="toggleDropdown()">
+    {{ selectedGovernorate || 'Select Governorate' }}
+      <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+  </button>
+
+  <div
+    *ngIf="isOpen"
+    class="absolute mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-[9999]">
+    <ul class="py-1 max-h-48 overflow-y-auto">
+      <li
+        *ngFor="let gov of governorates"
+        (click)="selectGovernorate(gov)"
+        class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+      >{{ gov }}
+      </li>
+    </ul>
+  </div>
+</div>
+
 
 
           <!-- Date Picker -->
-          <input nbInput type="date" [(ngModel)]="selectedDate" class="rounded-md border p-2" />
+          <input nbInput type="date" [(ngModel)]="selectedDate" class="rounded-md border p-2 shadow-md" />
 
           <!-- Fetch Button -->
-          <button nbButton status="primary" (click)="fetchWeather()">Get Weather</button>
+          <button nbButton class="shadow-md rounded-md border p-2 bg-blue-100" status="primary" (click)="fetchWeather()">Get Weather</button>
         </div>
       </nb-card-body>
     </nb-card>
 
     <!-- Loading -->
-    <nb-card class="w-full max-w-4xl mt-8 bg-white">
+    <nb-card class="w-full rounded-2xl max-w-4xl mt-8 bg-white shadow-md">
       <nb-card-body class="p-6">
     <div *ngIf="loading" class="mt-6 flex items-center">
       <nb-spinner size="large"></nb-spinner>
@@ -48,12 +65,12 @@
 
     <!-- Error -->
     
-    <nb-alert *ngIf="errorMessage" status="danger" class="mt-6 w-full max-w-4xl">
+    <nb-alert *ngIf="errorMessage" status="danger" class="mt-6 rounded-2xl w-full max-w-4xl ">
       {{ errorMessage }}
     </nb-alert>
     
     <!-- Weather Data Card -->
-    <nb-card *ngIf="weatherData" class="w-full max-w-4xl mt-6 text-center">
+    <nb-card *ngIf="weatherData" class="w-full rounded-2xl max-w-4xl mt-6 text-center shadow-md">
       <nb-card-body>
         <nb-icon icon="cloud-outline" class="text-blue-400 w-12 h-12 mb-4"></nb-icon>
         <h3 class="text-xl font-bold">{{ weatherData.location }}</h3>
@@ -68,3 +85,4 @@
 
   </nb-layout-column>
   </nb-layout>
+<div class="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center justify-center text-center max-w-4xl mx-auto">

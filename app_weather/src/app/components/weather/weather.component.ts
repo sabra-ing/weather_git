@@ -14,7 +14,7 @@ export class WeatherComponent {
     'Gabes', 'Mednine', 'Tataouine', 'Gafsa', 'Tozeur', 'Kebili'
   ];
 
-
+  isOpen = false;
 
   selectedGovernorate = '';
   selectedDate = new Date();
@@ -23,7 +23,14 @@ export class WeatherComponent {
   errorMessage = 'ready for weather data';
 
   constructor(private weatherService: WeatherService) {}
+    toggleDropdown() {
+    this.isOpen = !this.isOpen;
+  }
 
+  selectGovernorate(gov: string) {
+    this.selectedGovernorate = gov;
+    this.isOpen = false;
+  }
   fetchWeather() {
     if (!this.selectedGovernorate || !this.selectedDate) return;
 
