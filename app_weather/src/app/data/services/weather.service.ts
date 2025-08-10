@@ -7,7 +7,7 @@ import { WeatherData } from 'src/app/models/weather.model';
   providedIn: 'root'
 })
 export class WeatherService {
-  private baseUrl = 'http://localhost:8000/api/weather'; 
+  private baseUrl = 'http://127.0.0.1:8000/api/weather'; 
 
   constructor(private http: HttpClient) {}
   getWeather(governorate: string, date: string): Observable<WeatherData> {
