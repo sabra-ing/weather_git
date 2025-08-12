@@ -40,7 +40,7 @@ export class WeatherComponent {
     this.weatherData = null;
      // Convert string to Date object:
    const dateObj = new Date(this.selectedDate);
-   const formattedDate = dateObj.toISOString().split('T')[0];
+  const formattedDate = dateObj.toISOString().split('T')[0];
     this.weatherService.getWeather(this.selectedGovernorate, formattedDate).subscribe({
       next: (data) => {
         this.weatherData = data;
