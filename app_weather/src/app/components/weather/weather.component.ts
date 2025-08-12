@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WeatherService } from '../../data/services/weather.service';
+import { WeatherData } from 'src/app/models/weather.model'; 
 
 @Component({
   selector: 'app-weather',
@@ -18,7 +19,7 @@ export class WeatherComponent {
 
   selectedGovernorate = '';
   selectedDate = new Date();
-  weatherData: any = null;
+  weatherData: WeatherData | null = null;
   loading = false;
   errorMessage = 'ready for weather data';
 
@@ -37,9 +38,9 @@ export class WeatherComponent {
     this.loading = true;
     this.errorMessage = '';
     this.weatherData = null;
-
-    const formattedDate = this.selectedDate.toISOString().split('T')[0];
-
+     // Convert string to Date object:
+   const dateObj = new Date(this.selectedDate);
+   const formattedDate = dateObj.toISOString().split('T')[0];
     this.weatherService.getWeather(this.selectedGovernorate, formattedDate).subscribe({
       next: (data) => {
         this.weatherData = data;
